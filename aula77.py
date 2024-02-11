@@ -1,6 +1,6 @@
 import random
 import os
-perguntas = [
+PERGUNTAS = [
     {
         'pergunta': 'Qual a resposta para a vida, a verdade e o universo?',
         'opcoes': ['42', '78', '34', '24'],
@@ -27,40 +27,40 @@ perguntas = [
 
 ]
 
-tentativas = 3
-chave_aleatoria = random.randint(0, len(perguntas)-1)
+TENTATIVAS = 3
+CHAVE_ALEATORIA = random.randint(0, len(PERGUNTAS)-1)
 
-while (tentativas > 0):
-    print(f'Contagem de tentativas: {tentativas}\n')
+while (TENTATIVAS > 0):
+    print(f'Contagem de tentativas: {TENTATIVAS}\n')
 
-    pergunta = perguntas[chave_aleatoria]['pergunta'], '\n'
+    pergunta = PERGUNTAS[CHAVE_ALEATORIA]['pergunta'], '\n'
 
-    opcoes = perguntas[chave_aleatoria]['opcoes']
+    opcoes = PERGUNTAS[CHAVE_ALEATORIA]['opcoes']
 
-    resposta_key = perguntas[chave_aleatoria]['resposta']
+    resposta_correta = PERGUNTAS[CHAVE_ALEATORIA]['resposta']
 
     print(*pergunta)
 
     for i, opcoes in enumerate(opcoes, 1):
         print(f'{i}. {opcoes}')
 
-    resposta = input('Insira uma resposta: \n')
+    resposta_usuario = input('Insira uma resposta: \n')
 
     
-    if resposta.lower() == resposta_key.lower() :
+    if resposta_usuario.lower() == resposta_correta.lower() :
         os.system('clear')
-        print(f'Resposta: {resposta_key}') 
+        print(f'Resposta: {resposta_correta}') 
         print('\nVocê acertou!\n')
         break
 
-    elif resposta not in opcoes:
+    elif resposta_usuario not in opcoes:
         os.system('clear')
         print('\nResposta incorreta inserida.\n')
-        tentativas -= 1
+        TENTATIVAS -= 1
 
-    if tentativas <= 0:
+    if TENTATIVAS <= 0:
         os.system('clear')
         print('Suas tentativas chegaram a zero.')
-        print(f'a resposta correta era: {resposta_key}')
+        print(f'a resposta correta era: {resposta_correta}')
         print('programa encerrado.')
         break
